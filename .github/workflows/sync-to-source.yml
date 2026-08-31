@@ -1,0 +1,41 @@
+# .github/workflows/sync-to-source.yml  (in bloglide-posts)
+name: Sync posts to source
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: posts
+
+      - uses: actions/checkout@v5
+        with:
+          repository: ${{ vars.SOURCE_REPO }}
+          ssh-key: ${{ secrets.SOURCE_DEPLOY_KEY }}
+          path: source
+
+      - name: Mirror posts into source
+        run: |
+          rsync -a --delete \
+            --exclude '.git' \
+            --exclude '.obsidian' \
+            --exclude '.github' \
+            posts/ source/src/content/blog/
+
+      - name: Commit and push if changed
+        working-directory: source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to sync"
+          else
+            git commit -m "Sync posts from ${{ github.repository }}@${{ github.sha }}"
+            git push
+          fi
