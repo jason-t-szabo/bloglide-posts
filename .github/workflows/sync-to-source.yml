@@ -24,10 +24,14 @@ jobs:
           mkdir -p source/src/content/blog
           rsync -a --delete \
             --include '*/' \
-            --include '*.md' \
-            --include '*.mdx' \
-            --include '*.png' --include '*.jpg' --include '*.jpeg' \
-            --include '*.gif' --include '*.webp' --include '*.svg' \
+            --include '*.[mM][dD]' \
+            --include '*.[mM][dD][xX]' \
+            --include '*.[pP][nN][gG]' \
+            --include '*.[jJ][pP][gG]' \
+            --include '*.[jJ][pP][eE][gG]' \
+            --include '*.[gG][iI][fF]' \
+            --include '*.[wW][eE][bB][pP]' \
+            --include '*.[sS][vV][gG]' \
             --exclude '*' \
             posts/ source/src/content/blog/
 
