@@ -25,6 +25,7 @@ jobs:
             --exclude '.git' \
             --exclude '.obsidian' \
             --exclude '.github' \
+            --exclude '.gitignore' \
             posts/ source/src/content/blog/
 
       - name: Commit and push if changed
