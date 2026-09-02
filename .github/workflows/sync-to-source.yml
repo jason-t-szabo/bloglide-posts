@@ -21,11 +21,14 @@ jobs:
 
       - name: Mirror posts into source
         run: |
+          mkdir -p source/src/content/blog
           rsync -a --delete \
-            --exclude '.git' \
-            --exclude '.obsidian' \
-            --exclude '.github' \
-            --exclude '.gitignore' \
+            --include '*/' \
+            --include '*.md' \
+            --include '*.mdx' \
+            --include '*.png' --include '*.jpg' --include '*.jpeg' \
+            --include '*.gif' --include '*.webp' --include '*.svg' \
+            --exclude '*' \
             posts/ source/src/content/blog/
 
       - name: Commit and push if changed
