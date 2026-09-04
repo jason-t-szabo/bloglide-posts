@@ -22,7 +22,9 @@ jobs:
       - name: Mirror posts into source
         run: |
           mkdir -p source/src/content/blog
-          rsync -a --delete \
+          rsync -a --delete --delete-excluded \
+            --exclude '_*' \
+            --exclude '.*' \
             --include '*/' \
             --include '*.[mM][dD]' \
             --include '*.[mM][dD][xX]' \
