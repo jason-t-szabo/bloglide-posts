@@ -1,9 +1,14 @@
 {
   "types": {
-    "aliases": "aliases",
-    "cssclasses": "multitext",
-    "tags": "tags",
+    "title": "text",
+    "description": "text",
+    "pubDate": "datetime",
+    "updatedDate": "datetime",
+    "heroImage": "text",
+    "visibility": "text",
     "topics": "multitext",
-    "updatedDate": "date"
+    "tags": "tags",
+    "aliases": "aliases",
+    "cssclasses": "multitext"
   }
 }
