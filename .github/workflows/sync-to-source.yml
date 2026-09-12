@@ -21,7 +21,7 @@ jobs:
 
       - name: Mirror posts into source
         run: |
-          mkdir -p source/src/content/blog
+          mkdir -p source/src/content/vault
           rsync -a --delete --delete-excluded \
             --exclude '_*' \
             --exclude '.*' \
@@ -35,7 +35,7 @@ jobs:
             --include '*.[wW][eE][bB][pP]' \
             --include '*.[sS][vV][gG]' \
             --exclude '*' \
-            posts/ source/src/content/blog/
+            posts/ source/src/content/vault/
 
       - name: Commit and push if changed
         working-directory: source
