@@ -5,10 +5,11 @@
     "pubDate": "datetime",
     "updatedDate": "datetime",
     "heroImage": "text",
+    "heroImageAlt": "text",
     "visibility": "text",
     "topics": "multitext",
-    "tags": "tags",
     "aliases": "aliases",
-    "cssclasses": "multitext"
+    "cssclasses": "multitext",
+    "tags": "tags"
   }
 }
